@@ -61,7 +61,7 @@ const VisualBox = ({ name, info, infoName, info2, infoName2 }: VisualBoxType) =>
 
 const CardTree = () => {
 	return (
-		<div className="flex flex-col justify-center items-center absolute top-20 z-1">
+		<div className="flex flex-col justify-center items-center absolute top-13 md:top-20">
 			<CardTreeLine isFaded={true} width="3px" height="40px" />
 			{/* First Card */}
 			<VisualBox
@@ -72,36 +72,40 @@ const CardTree = () => {
 				infoName2="This Month"
 			/>
 			<CardTreeLine isFaded={false} width="3px" height="40px" />
-			<CardTreeLine2 />
-			<div className="flex gap-14 items-center relative -top-1">
-				<VisualBox
-					name="Contribution Activity"
-					info="1,247"
-					infoName="Total Contribution"
-					info2="20%"
-					infoName2="This Month"
-				/>
-				<VisualBox
-					name="Contribution Activity"
-					info="1,247"
-					infoName="Total Contribution"
-					info2="20%"
-					infoName2="This Month"
-				/>
-				<VisualBox
-					name="Contribution Activity"
-					info="1,247"
-					infoName="Total Contribution"
-					info2="20%"
-					infoName2="This Month"
-				/>
-				<VisualBox
-					name="Contribution Activity"
-					info="1,247"
-					infoName="Total Contribution"
-					info2="20%"
-					infoName2="This Month"
-				/>
+			<div className="flex flex-col items-start w-screen overflow-scroll px-5 scrollbar-none lg:items-center">
+				<div className="flex flex-col items-center py-1">
+					<CardTreeLine2 />
+					<div className="flex gap-[min(5vw,56px)] items-center relative -top-1">
+						<VisualBox
+							name="Contribution Activity"
+							info="1,247"
+							infoName="Total Contribution"
+							info2="20%"
+							infoName2="This Month"
+						/>
+						<VisualBox
+							name="Contribution Activity"
+							info="1,247"
+							infoName="Total Contribution"
+							info2="20%"
+							infoName2="This Month"
+						/>
+						<VisualBox
+							name="Contribution Activity"
+							info="1,247"
+							infoName="Total Contribution"
+							info2="20%"
+							infoName2="This Month"
+						/>
+						<VisualBox
+							name="Contribution Activity"
+							info="1,247"
+							infoName="Total Contribution"
+							info2="20%"
+							infoName2="This Month"
+						/>
+					</div>
+				</div>
 			</div>
 		</div>
 	);
