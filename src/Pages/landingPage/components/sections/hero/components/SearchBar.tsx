@@ -4,6 +4,7 @@ export default function SearchBar() {
 			<div className="w-[95%] max-w-139.25 h-[min(12vw,46px)] rounded-full bg-(--colorBox) border border-(--colorBorder) shadow-[0_4px_3px_1px_#00000030]">
 				<input
 					type="text"
+					name="urlInput"
 					placeholder="Enter a GitHub username or url..."
 					className="w-full h-full outline-none px-5 text-[#00000090] placeholder:text-[#00000047] text-[min(4vw,16px)]"
 				/>
