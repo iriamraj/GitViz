@@ -11,7 +11,7 @@ export default function SectionHero() {
 			<HeroHeading />
 			<SearchBar />
 			<Visual />
-			<DivideLine />
+			<DivideLine marginTop="0" marginBottom="0" />
 		</section>
 	);
 }
