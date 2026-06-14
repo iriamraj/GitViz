@@ -1,4 +1,4 @@
-import { motion } from "motion/react";
+import { motion } from "framer-motion"; 
 
 // Types
 import type { IconPositionType } from "../../types/IconPositionType";
