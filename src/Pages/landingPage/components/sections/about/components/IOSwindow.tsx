@@ -9,7 +9,13 @@ export default function IOSwindow() {
 				<div className="bg-green-500 w-3 h-3 rounded-full"></div>
 			</div>
 			<div className="flex items-center justify-center px-1 pb-1 md:px-2 md:pb-2">
-				<img src={preview} alt="" className="rounded-b-2xl" />
+				<img
+					src={preview}
+					alt=""
+					className="rounded-b-2xl"
+					fetchPriority="low"
+					loading="lazy"
+				/>
 			</div>
 		</div>
 	);

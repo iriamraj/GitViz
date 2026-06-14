@@ -1,4 +1,4 @@
-import Heading from "./components/Heading";
+import Heading from "../../heading/Heading";
 import IOSwindow from "./components/IOSwindow";
 import Line from "./components/Line";
 import PreviewBox from "./components/PreviewBox";
@@ -8,7 +8,7 @@ import DivideLine from "../../DivideLine/DivideLine";
 
 export default function SectionAbout() {
 	return (
-		<section className="mb-40 flex flex-col items-center px-5">
+		<section id="About" className="flex flex-col items-center px-5">
 			<Heading heading="Everything in" headingColor="One Place">
 				See all your GitHub stats laid out in a clean, interactive dashboard repositories,
 				language breakdown, star count, and contribution activity, all at a glance. No
@@ -28,10 +28,10 @@ export default function SectionAbout() {
 			<div className="flex flex-col md:flex-row justify-center items-center mt-5 md:mt-10 gap-5 md:gap-20">
 				<IOSwindow />
 				<div>
-					<img src={treeImg} alt="" className="w-85 md:w-full max-w-100" />
+					<img src={treeImg} alt="" className="w-85 md:w-full max-w-100" fetchPriority="low" loading="lazy" />
 				</div>
 			</div>
-			<DivideLine marginTop="80px" marginBottom="80px" />
+			<DivideLine marginTop="80px" marginBottom="10px" />
 		</section>
 	);
 }
