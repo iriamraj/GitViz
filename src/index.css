@@ -22,3 +22,7 @@ html::-webkit-scrollbar {
 body {
 	background-color: var(--colorBase);
 }
+
+html {
+	scroll-behavior: smooth;
+}

@@ -6,7 +6,7 @@ import Visual from "./components/Visual";
 
 export default function SectionHero() {
 	return (
-		<section className="flex flex-col justify-center items-center pt-20">
+		<section id="Hero" className="flex flex-col justify-center items-center pt-20">
 			<FloatingIcons/>
 			<HeroHeading />
 			<SearchBar />

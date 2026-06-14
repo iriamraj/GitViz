@@ -1,4 +1,4 @@
-import type { AboutHeadingType } from "../../../../types/AboutHeadingType";
+import type { AboutHeadingType } from "../../types/AboutHeadingType"; 
 
 export default function Heading({ heading, headingColor, children }: AboutHeadingType) {
 	return (
