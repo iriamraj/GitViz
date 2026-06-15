@@ -1,5 +1,5 @@
 // Components
-// import Footer from "./components/footer/Footer";
+import Footer from "./components/footer/Footer";
 import Header from "./components/header/Header";
 import SectionAbout from "./components/sections/about/SectionAbout";
 import SectionCTA from "./components/sections/cta/SectionCTA";
@@ -14,7 +14,7 @@ export default function LandingPage() {
 			<SectionAbout />
 			<SectionUsage />
 			<SectionCTA />
-			{/* <Footer /> */}
+			<Footer />
 		</main>
 	);
 }
