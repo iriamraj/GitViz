@@ -5,13 +5,16 @@ import SearchBar from "./components/SearchBar";
 import Visual from "./components/Visual";
 
 export default function SectionHero() {
-	return (
-		<section id="Hero" className="flex flex-col justify-center items-center pt-20">
-			<FloatingIcons/>
-			<HeroHeading />
-			<SearchBar />
-			<Visual />
-			<DivideLine marginTop="0" marginBottom="0" />
-		</section>
-	);
+  return (
+    <section
+      id="Hero"
+      className="flex flex-col items-center justify-center pt-27"
+    >
+      <FloatingIcons />
+      <HeroHeading />
+      <SearchBar />
+      <Visual />
+      <DivideLine marginTop="0" marginBottom="0" />
+    </section>
+  );
 }
