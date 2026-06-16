@@ -1,4 +1,4 @@
-import { motion } from "framer-motion"; 
+import { motion } from "framer-motion";
 
 // Types
 import type { IconPositionType } from "../../types/IconPositionType";
@@ -8,6 +8,7 @@ import gitIcon from "../../../../assets/icons/git-icon.svg";
 import branchIcon from "../../../../assets/icons/branch-icon.svg";
 import jsIcon from "../../../../assets/icons/js-icon.svg";
 import reactIcon from "../../../../assets/icons/react-icon.svg";
+import useThemeStore from "../../store/ThemeStore";
 
 const iconData: IconPositionType[] = [
 	{
@@ -37,6 +38,7 @@ const iconData: IconPositionType[] = [
 ];
 
 function Icon({ top, left, right, img }: IconPositionType) {
+	const isDark = useThemeStore((state) => state.isDark);
 	return (
 		<motion.div
 			animate={{ y: [0, 15, 0] }}
@@ -46,7 +48,7 @@ function Icon({ top, left, right, img }: IconPositionType) {
 				repeat: Infinity,
 				repeatType: "loop",
 			}}
-			className="absolute w-13 h-12 bg-(--colorWhite) rounded-2xl border border-(--colorBorder) shadow-[0_4px_5px_0px_#00000060] flex items-center justify-center backdrop-blur-[3px] "
+			className={`absolute w-13 h-12 rounded-2xl border border-(--colorBorder) shadow-[0_4px_5px_0px_#00000060] flex items-center justify-center backdrop-blur-[3px] ${isDark && "bg-(--colorBase)"} transition-colors duration-300`}
 			style={{
 				top: top,
 				left: left,
