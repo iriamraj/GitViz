@@ -8,17 +8,17 @@ import SectionUsage from "./components/sections/usage/SectionUsage";
 import useThemeStore from "./store/ThemeStore";
 
 export default function LandingPage() {
-	const isDark = useThemeStore((state) => state.isDark);
-	return (
-		<main
-			className={`min-h-screen max-w-384 m-auto ${isDark ? "bg-(--colorBaseDark)" : "bg-(--colorBase)"} transition-colors duration-300`}
-		>
-			<Header />
-			<SectionHero />
-			<SectionAbout />
-			<SectionUsage />
-			<SectionCTA />
-			<Footer />
-		</main>
-	);
+  const isDark = useThemeStore((state) => state.isDark);
+  return (
+    <main
+      className={`m-auto min-h-screen max-w-384 ${isDark ? "bg-(--colorBaseDark)" : "bg-(--colorBase)"} transition-colors duration-300`}
+    >
+      <Header />
+      <SectionHero />
+      <SectionAbout />
+      <SectionUsage />
+      <SectionCTA />
+      <Footer />
+    </main>
+  );
 }

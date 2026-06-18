@@ -1,5 +1,4 @@
 export interface AboutHeadingType {
-	heading: string;
-	headingColor: string;
-	children: string;
+  heading: string;
+  headingColor: string;
 }
