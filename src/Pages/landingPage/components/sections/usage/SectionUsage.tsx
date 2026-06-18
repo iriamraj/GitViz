@@ -28,9 +28,9 @@ export default function SectionUsage() {
           description="Paste any public GitHub profile URL or just a username — we'll handle the rest automatically."
         />
       </div>
-      <div className="mt-[min(8vw,50px)] flex w-full items-center justify-center">
+      <div className="mt-[min(8vw,40px)] flex w-full items-center justify-center">
         <p
-          className={`max-w-280 ${isDark ? "text-(--colorTextDark)" : "text-(--colorText)"} text-center transition-colors duration-300`}
+          className={`max-w-280 ${isDark ? "text-(--colorTextDark)" : "text-(--colorText)/80"} text-center font-medium transition-colors duration-300`}
         >
           Every commit you've ever pushed, mapped out as branching paths — just
           like Git itself thinks. Trace your project's growth, spot your most
@@ -48,10 +48,12 @@ function CardUsage({ id, title, description }: CardUsageType) {
       <div className="ml-3 flex h-11 w-11 rotate-45 items-center justify-center rounded-xl bg-(--colorPurple) text-2xl font-bold text-(--colorAsh)">
         <div className="-rotate-45">{id}</div>
       </div>
-      <Card borderRadius="24px" width="355px" height="130px">
+      <Card borderRadius="24px" width="355px" height="fit">
         <div className="flex h-full w-full flex-col gap-1 p-3">
-          <h3 className="font-medium">{title}</h3>
-          <p className="text-(--colorText)">{description}</p>
+          <h3 className="font-geist text-(--colorText)">{title}</h3>
+          <p className="font-inter tracking- text-[15px] font-medium text-(--colorText)/70">
+            {description}
+          </p>
         </div>
       </Card>
     </div>

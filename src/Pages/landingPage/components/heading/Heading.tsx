@@ -1,10 +1,7 @@
 import useThemeStore from "../../store/ThemeStore";
 import type { AboutHeadingType } from "../../types/AboutHeadingType";
 
-export default function Heading({
-  heading,
-  headingColor,
-}: AboutHeadingType) {
+export default function Heading({ heading, headingColor }: AboutHeadingType) {
   const isDark = useThemeStore((state) => state.isDark);
   return (
     <div className="mt-15 flex flex-col gap-4 text-start md:mt-20">
@@ -15,7 +12,12 @@ export default function Heading({
           >
             {heading}
           </span>
-          <span className="text-(--colorPurple)"> {headingColor}</span>
+          <span
+            className={`${isDark ? "text-(--colorPurpleDark)" : "text-(--colorPurple)"} transition-colors duration-300`}
+          >
+            {" "}
+            {headingColor}
+          </span>
         </h2>
       </div>
     </div>

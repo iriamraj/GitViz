@@ -48,7 +48,7 @@ function Icon({ top, left, right, img }: IconPositionType) {
         repeat: Infinity,
         repeatType: "loop",
       }}
-      className={`absolute flex h-12 w-13 items-center justify-center rounded-2xl border border-(--colorBorder) shadow-[0_4px_5px_0px_#00000060] backdrop-blur-[3px] ${isDark && "bg-(--colorBase)"} transition-colors duration-300`}
+      className={`absolute flex h-12 w-13 items-center justify-center rounded-2xl border border-(--colorBorder) shadow-[0_4px_5px_0px_#00000060] backdrop-blur-[3px] ${isDark && "bg-(--colorAsh)"} transition-colors duration-300`}
       style={{
         top: top,
         left: left,

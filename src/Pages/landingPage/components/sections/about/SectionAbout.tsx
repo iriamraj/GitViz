@@ -25,7 +25,7 @@ export default function SectionAbout() {
         </div>
         <div className="flex w-full items-center justify-center">
           <p
-            className={`max-w-280 ${isDark ? "text-(--colorTextDark)" : "text-(--colorText)"} text-center transition-colors duration-300`}
+            className={`max-w-280 ${isDark ? "text-(--colorTextDark)" : "text-(--colorText)/80"} text-center transition-colors duration-300 font-medium`}
           >
             See all your GitHub stats laid out in a clean, interactive dashboard
             repositories, language breakdown, star count, and contribution
@@ -39,7 +39,7 @@ export default function SectionAbout() {
           heading="Your Commits as a "
           headingColor="Living Tree"
         ></Heading>
-        <div className="mt-5 flex flex-col items-center justify-center gap-5 md:flex-row md:gap-20">
+        <div className="flex flex-col items-center justify-center gap-5 md:flex-row md:gap-20">
           <IOSwindow />
           <div>
             <img
@@ -53,7 +53,7 @@ export default function SectionAbout() {
         </div>
         <div className="flex w-full items-center justify-center">
           <p
-            className={`max-w-280 ${isDark ? "text-(--colorTextDark)" : "text-(--colorText)"} text-center transition-colors duration-300`}
+            className={`max-w-280 ${isDark ? "text-(--colorTextDark)" : "text-(--colorText)/80"} text-center transition-colors duration-300  font-medium`}
           >
             See all your GitHub stats laid out in a clean, interactive dashboard
             repositories, language breakdown, star count, and contribution
