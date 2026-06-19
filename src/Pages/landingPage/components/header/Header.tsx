@@ -24,7 +24,7 @@ export default function Header() {
 
   return (
     <header
-      className={`4 fixed z-1 flex w-full max-w-384 items-center justify-between px-6 py-4 md:px-12 md:py-6 ${isDark ? "bg-black" : "bg-(--colorBase)"} transition-colors duration-300`}
+      className={`4 fixed z-1 flex w-full max-w-384 items-center justify-between px-6 py-4 md:px-12 md:py-6 ${isDark ? "bg-black" : "bg-(--colorBase)"} backdrop-blur-2xl transition-colors duration-300`}
     >
       <motion.h2
         initial={{ opacity: 0 }}

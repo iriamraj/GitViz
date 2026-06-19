@@ -6,7 +6,7 @@ import useThemeStore from "../../../store/ThemeStore";
 export default function SectionCTA() {
   const isDark = useThemeStore((state) => state.isDark);
   return (
-    <section className="flex flex-col items-center relative z-5">
+    <section className="relative z-5 flex flex-col items-center">
       <motion.h2
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -46,7 +46,7 @@ export default function SectionCTA() {
         transition={{ duration: 0.6, ease: "easeOut" }}
         viewport={{ once: true, amount: 0.4 }}
         href="#"
-        className="mt-7 mb-0.5 flex h-10 w-40 cursor-pointer items-center justify-center rounded-full bg-(--colorPurple) font-semibold text-(--colorAsh)"
+        className="mt-7 mb-0.5 flex h-8 w-30 cursor-pointer items-center justify-center rounded-full bg-(--colorPurple) text-[min(3.7vw,16px)] font-semibold text-(--colorAsh) md:h-10 md:w-40"
       >
         <button className="cursor-pointer">Try It Now</button>
       </motion.a>
