@@ -6,7 +6,7 @@ export default function PreviewBox() {
       <div className="flex h-fit w-[95%] items-center justify-center rounded-2xl bg-(--colorBox) md:h-49.5 md:w-101">
         <img
           src={cardImg}
-          alt=""
+          alt="card"
           className="w-[90%]"
           fetchPriority="low"
           loading="lazy"

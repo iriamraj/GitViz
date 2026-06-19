@@ -4,6 +4,8 @@ import lightModeIcon from "../../../../assets/icons/lightMode-icon.svg";
 import useThemeStore from "../../store/ThemeStore";
 import { useShallow } from "zustand/shallow";
 
+import { motion } from "framer-motion";
+
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
   const [navActive, setNavActive] = useState("HERO");
@@ -24,7 +26,11 @@ export default function Header() {
     <header
       className={`4 fixed z-1 flex w-full max-w-384 items-center justify-between px-6 py-4 md:px-12 md:py-6 ${isDark ? "bg-black" : "bg-(--colorBase)"} transition-colors duration-300`}
     >
-      <h2>
+      <motion.h2
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+      >
         <span
           className={`font-geist text-3xl ${isDark ? "text-(--colorPurpleDark)" : "text-(--colorPurple)"} transition-colors duration-300`}
         >
@@ -33,15 +39,21 @@ export default function Header() {
         <span className="font-inter text-2xl font-bold text-(--colorAsh)">
           viz
         </span>
-      </h2>
-      <div
+      </motion.h2>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.6, delay: 0.2 }}
         className={`relative text-2xl font-black md:hidden ${isDark && "text-(--colorCardDark)"}`}
         onClick={() => setIsMenuOpen(!isMenuOpen)}
       >
         ☰
-      </div>
-      <nav
-        className={`${isMenuOpen ? "absolute top-full left-0 flex h-screen w-screen flex-col items-center justify-center gap-10 rounded-2xl bg-black/80 px-6 py-3 [&>a]:text-[16px]" : "hidden"} font-inter items-center gap-10 text-[12px] md:flex [&>a]:tracking-widest ${isDark ? "text-(--colorTextDark)" : "md:text-Black"} [&>a]:transition-colors [&>a]:duration-300`}
+      </motion.div>
+      <motion.nav
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+        className={`${isMenuOpen ? "absolute top-full left-0 flex h-screen w-screen flex-col items-center justify-center gap-10 rounded-2xl bg-black/80 px-6 py-3 [&>a]:text-[16px]" : "hidden"} font-inter items-center gap-10 text-[12px] md:flex [&>a]:tracking-widest [&>a]:transition-colors [&>a]:duration-300 ${isDark ? "text-(--colorTextDark)" : "text-(--colorTextDark) md:text-black"}`}
       >
         <a
           href="#Hero"
@@ -60,7 +72,7 @@ export default function Header() {
         <a
           href="#Usage"
           onClick={() => handleActiveNav("USAGE")}
-          className={`${navActive === "USAGE" && "rounded-full px-8 py-2 font-medium text-(--colorAsh)"} ${navActive === "USAGE" && (isDark ? "bg-(--colorPurpleLight)" : "bg-(--colorPurple)/90")}`}
+          className={`${navActive === "USAGE" ? "rounded-full px-8 py-2 font-medium text-(--colorAsh)" : ""} ${navActive === "USAGE" ? (isDark ? "bg-(--colorPurpleLight)" : "bg-(--colorPurple)/90") : ""}`}
         >
           USAGE
         </a>
@@ -72,12 +84,12 @@ export default function Header() {
           CONTACT
         </a>
         <button
-          className={`flex font-medium h-9 w-23 cursor-pointer items-center justify-between rounded-full border-3 px-2 py-0.5 ${isDark ? "border-(--colorPurpleDark)" : "border-(--colorPurple)"} transition-colors duration-300`}
+          className={`flex h-9 w-23 cursor-pointer items-center justify-between rounded-full border-3 px-2 py-0.5 font-medium ${isDark ? "border-(--colorPurpleDark)" : "border-(--colorPurple)"} transition-colors duration-300`}
           onClick={() => switchTheme()}
         >
           {isDark ? <LightMode /> : <DarkMode />}
         </button>
-      </nav>
+      </motion.nav>
     </header>
   );
 }
@@ -86,7 +98,13 @@ function DarkMode() {
   return (
     <>
       <div className="flex h-6.5 w-6.5 items-center justify-center rounded-full bg-(--colorPurple) p-1">
-        <img src={darkModeIcon} alt="" className="rounded-full" />
+        <img
+          src={darkModeIcon}
+          alt="dark"
+          className="rounded-full"
+          fetchPriority="high"
+          loading="eager"
+        />
       </div>
       <p className="">DARK</p>
     </>
@@ -98,7 +116,13 @@ function LightMode() {
     <>
       <p className="text-(--colorTextDark)">LIGHT</p>
       <div className="flex h-6.5 w-6.5 items-center justify-center rounded-full bg-(--colorPurpleDark) p-1">
-        <img src={lightModeIcon} alt="" className="rounded-full" />
+        <img
+          src={lightModeIcon}
+          alt="light"
+          className="rounded-full"
+          fetchPriority="high"
+          loading="eager"
+        />
       </div>
     </>
   );
