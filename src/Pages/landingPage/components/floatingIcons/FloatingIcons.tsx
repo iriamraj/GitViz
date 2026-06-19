@@ -55,14 +55,19 @@ function Icon({ top, left, right, img }: IconPositionType) {
         right: right,
       }}
     >
-      <img src={img} alt="icon" />
+      <img src={img} alt="icons" fetchPriority="high" loading="eager" />
     </motion.div>
   );
 }
 
 export default function FloatingIcons() {
   return (
-    <div className="relative hidden h-auto w-full lg:block">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.6, delay: 0.3 }}
+      className="relative hidden h-auto w-full lg:block"
+    >
       {iconData.map((item) => (
         <Icon
           key={item.id}
@@ -72,6 +77,6 @@ export default function FloatingIcons() {
           img={item.img}
         />
       ))}
-    </div>
+    </motion.div>
   );
 }

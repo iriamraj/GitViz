@@ -1,4 +1,4 @@
 export interface CurveType {
-  height: number;
-  paddingTop: number;
+  height: string;
+  paddingTop: string;
 }

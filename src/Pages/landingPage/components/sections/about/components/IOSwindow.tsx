@@ -11,7 +11,7 @@ export default function IOSwindow() {
       <div className="flex items-center justify-center px-1 pb-1 md:px-2 md:pb-2">
         <img
           src={preview}
-          alt=""
+          alt="preview"
           className="rounded-b-2xl"
           fetchPriority="low"
           loading="lazy"
