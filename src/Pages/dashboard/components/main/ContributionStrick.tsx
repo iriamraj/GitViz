@@ -3,9 +3,9 @@ import CardHeading from "./CardHeading";
 
 export default function ContributionStrick() {
   return (
-    <Card className="h-fit min-w-60 ">
+    <Card className="h-full min-w-60 ">
       <CardHeading>Contribution Strick</CardHeading>
-      <div className="flex flex-col items-center justify-around self-stretch overflow-clip antialiased [font-synthesis:none]">
+      <div className="flex flex-col items-center justify-around self-stretch overflow-clip antialiased [font-synthesis:none] gap-3">
         <div className="flex w-full items-center justify-evenly gap-10 overflow-clip">
           <div className="flex flex-col items-center justify-center self-stretch overflow-clip">
             <div className="w-fit content-center font-['Inter',system-ui,sans-serif] text-xl/6 font-medium text-[#2C2D30]">
