@@ -27,7 +27,7 @@ const navIconsList = [
 
 export default function Nav() {
   return (
-    <div className="flex w-full flex-1 flex-col items-center gap-7 py-6 [&>div]:w-10">
+    <div className="flex w-full flex-1 md:flex-col items-center gap-7 py-6 [&>div]:w-10">
       {navIconsList.map((navIcon) => (
         <div key={navIcon.id} className="h-fit rounded-lg bg-[#27272759] p-2.5 cursor-pointer">
           <img src={navIcon.icon} alt={navIcon.name} />

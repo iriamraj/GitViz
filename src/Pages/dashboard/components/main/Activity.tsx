@@ -4,7 +4,7 @@ import CardHeading from "./CardHeading";
 export default function Activity() {
   const dummyData = Array.from({ length: 10 }).fill("1");
   return (
-    <Card className="h-fit w-[85%]">
+    <Card className="h-fit w-[85%] min-w-full md:min-w-auto">
       <CardHeading>Recent Activity</CardHeading>
       <div className="flex h-full w-full">
         <div className="mt-0.5 h-44.5 w-0.5 translate-x-2 bg-green-600"></div>

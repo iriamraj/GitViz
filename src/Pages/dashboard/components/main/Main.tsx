@@ -14,33 +14,33 @@ import Stats from "./Stats";
 
 export default function Main() {
   return (
-    <main className="flex h-full w-full flex-col gap-3 overflow-hidden rounded-3xl p-2">
-      <div className="flex gap-3">
+    <main className="flex h-full w-full flex-col gap-3 rounded-3xl md:p-2 xl:overflow-hidden">
+      <div className="flex flex-col gap-3 md:flex-row">
         <div className="flex flex-col gap-3">
           <ProfileCard />
           <Achievement />
         </div>
         <div className="flex w-full flex-col gap-3">
-          <div className="flex gap-3">
+          <div className="flex flex-col gap-3 md:flex-row">
             <Stats />
             <Contribution />
           </div>
-          <div className="flex gap-3">
+          <div className="flex flex-col gap-3 md:flex-row">
             <Organization />
             <Gists />
             <ContributionStrick />
           </div>
-          <div className="flex gap-3">
+          <div className="flex flex-col gap-3 md:flex-row">
             <Language />
             <Activity />
           </div>
-          <div className="flex gap-3">
+          <div className="flex flex-col gap-3 md:flex-row">
             <PullRequest />
             <Issues />
           </div>
         </div>
       </div>
-      <div className="flex h-fit w-full gap-3">
+      <div className="flex h-fit w-full gap-3 flex-col md:flex-row pb-5 md:pb-0 ">
         <Export />
         <Skills />
       </div>
