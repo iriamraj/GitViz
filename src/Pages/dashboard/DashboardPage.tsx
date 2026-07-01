@@ -1,14 +1,11 @@
-import Main from "./components/main/Main";
+import Routes from "./components/routes/Routes";
 import Sidebar from "./components/sidebar/Sidebar";
 
-export default function DashboardPage() {
-  return (
-    <div
-      id="dashboard"
-      className="flex h-screen w-full flex-col gap-3 px-5 py-5 md:flex-row md:gap-6.75 md:px-10"
-    >
-      <Sidebar />
-      <Main />
-    </div>
-  );
+export default function () {
+	return (
+		<main className="flex items-center w-384 h-194.5 bg-(--coloDashBg) antialiased">
+			<Sidebar />
+			<Routes />
+		</main>
+	);
 }

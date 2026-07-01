@@ -1,30 +1,37 @@
-import gitIcon from "../../../../assets/icons/git-icon.svg";
-import logoutIcon from "../../../../assets/icons/logout-icon.svg";
-import Nav from "./Nav";
+import { Nav } from "./Nav";
+import GithubIcon from "../../../../assets/icons/GithubIcon";
+import ExportIcon from "../../../../assets/icons/ExportIcon";
 
 export default function Sidebar() {
-  return (
-    <aside className="flex h-full flex-col items-center justify-between rounded-[10px] bg-(--colorPurple) px-3 py-3 md:w-21 md:justify-start md:py-5">
-      <div className="flex w-full items-center justify-between md:w-auto">
-        <div className="flex h-10 items-center gap-4 md:h-auto md:flex-col md:gap-0">
-          <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white">
-            <img src={gitIcon} alt="" className="w-7" />
-          </div>
-          <div className="hidden md:block h-full w-px bg-white/40 md:mt-3 md:h-px md:w-full"></div>
-        </div>
+	return (
+		<aside className="flex overflow-clip flex-col items-center gap-12 self-stretch py-7.75 px-7.5 relative border-r border-r-solid border-r-(--colorDashBorder)">
+			<div
+				id="floating"
+				className="w-92.5 h-107.25 absolute -left-51.5 top-74.25 rounded-full filter-[blur(100px)] bg-[#FFAE421F]"
+			/>
+			<div
+				id="logo"
+				className="flex overflow-clip items-start gap-2.5 justify-center relative"
+			>
+				<div className="flex overflow-clip items-center">
+					<GithubIcon fillColor="#6f60b5" />
+				</div>
+				<div className="font-['Poppins',system-ui,sans-serif] font-medium text-black text-2xl/7.5">
+					GitViz
+				</div>
+			</div>
 
-        <p className="mr-1 block cursor-pointer text-2xl font-black text-(--colorBox) md:hidden">
-          ☰
-        </p>
-      </div>
-
-      <div className="hidden flex-1 flex-col items-center md:flex">
-        <Nav />
-        <div className="mb-2 hidden h-full w-px bg-white/40 md:block md:h-px md:w-full"></div>
-        <div className="mt-2 mb-2 h-6 w-6 cursor-pointer">
-          <img src={logoutIcon} alt="" className="fill-white" />
-        </div>
-      </div>
-    </aside>
-  );
+			<div className="flex overflow-clip flex-col items-start gap-8.25 self-stretch flex-1 justify-between relative">
+				<Nav />
+				<div className="flex overflow-clip items-center gap-3.5 px-5 self-stretch">
+					<div className="flex overflow-clip items-center relative w-6.5 h-7.5">
+						<ExportIcon fillColor="#6f60b5" />
+					</div>
+					<div className="content-center font-['Poppins',system-ui,sans-serif] text-[#6F60B5] text-base/5">
+						Export
+					</div>
+				</div>
+			</div>
+		</aside>
+	);
 }
