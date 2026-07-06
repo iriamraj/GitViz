@@ -47,7 +47,7 @@ export default function Sidebar() {
 	}
 
 	return (
-		<aside className="px-5 py-5 bg-(--colorForeground) border-b border-b-(--colorDashBorder) sm:border-r sm:border-r-(--colorDashBorder) gap-8 flex flex-col items-center">
+		<aside className="px-5 py-5 bg-(--colorForeground) border-b border-b-(--colorDashBorder) md:border-r md:border-r-(--colorDashBorder) gap-8 flex flex-col items-center">
 			<div className="flex items-center justify-between w-full">
 				<div className="flex items-center gap-2 w-57.5">
 					<div className="rounded-full shadow-[0_1px_3px_#00000060] w-9 h-9 p-2 flex justify-center">
@@ -60,15 +60,15 @@ export default function Sidebar() {
 
 				<div onClick={handelHamburger}>
 					{isHamburgerExpanded ? (
-						<RxCross2 className="sm:hidden h-5.5 w-5.5 stroke-[0.5]" />
+						<RxCross2 className="md:hidden h-5.5 w-5.5 stroke-[0.5]" />
 					) : (
-						<RxHamburgerMenu className="sm:hidden h-5.5 w-5.5 stroke-[0.5]" />
+						<RxHamburgerMenu className="md:hidden h-5.5 w-5.5 stroke-[0.5]" />
 					)}
 				</div>
 			</div>
 
 			<div
-				className={`h-full w-full sm:flex flex-col ${isHamburgerExpanded ? "flex" : "hidden"}`}
+				className={`h-full w-full md:flex flex-col ${isHamburgerExpanded ? "flex" : "hidden"}`}
 				onClick={handelHamburger}
 			>
 				<div className="flex-1 text-[14px] font-medium gap-1 flex flex-col [&>div]:cursor-pointer">
