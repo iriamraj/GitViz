@@ -1,11 +1,9 @@
-import Routes from "./components/routes/Routes";
 import Sidebar from "./components/sidebar/Sidebar";
 
-export default function () {
+export default function DashboardPage() {
 	return (
-		<main className="flex items-center w-384 h-194.5 bg-(--coloDashBg) antialiased">
+		<div className="bg-(--colorBackground) w-full h-screen font-poppins flex flex-col sm:flex-row">
 			<Sidebar />
-			<Routes />
-		</main>
+		</div>
 	);
 }
