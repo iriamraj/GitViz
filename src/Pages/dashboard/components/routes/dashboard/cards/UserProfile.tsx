@@ -5,7 +5,7 @@ import SmallCard from "./SmallCard";
 
 export default function UserProfile() {
 	return (
-		<Card className="max-w-[288px] flex flex-col gap-6">
+		<Card className="w-full md:w-[288px] flex flex-col gap-6 px-4 py-6">
 			<div className="text-center flex flex-col items-center gap-4">
 				<div className="w-24 h-24 border rounded-full"></div>
 				<div>
@@ -23,14 +23,14 @@ export default function UserProfile() {
 			<div className="text-[14px] flex flex-col gap-3">
 				<SmallCard className="gap-3">
 					<div className="w-8 h-8 rounded-full bg-(--colorPurple)/20 flex items-center justify-center shrink-0">
-						<MdOutlineMail className="w-4 h-4" />
+						<MdOutlineMail className="w-4 h-4 text-(--colorPurple)" />
 					</div>
 					<p className="truncate">ir.iamraj@gmail.com</p>
 				</SmallCard>
 
 				<SmallCard className="gap-3">
 					<div className="w-8 h-8 rounded-full bg-(--colorPurple)/20 flex items-center justify-center shrink-0">
-						<FaXTwitter className="w-4 h-4" />
+						<FaXTwitter className="w-4 h-4 text-(--colorPurple)" />
 					</div>
 					<p className="truncate">@raj_mallick</p>
 				</SmallCard>
