@@ -48,9 +48,9 @@ export default function Stats() {
 				>
 					<div
 						id="iconHolder"
-						className="w-10 h-10 rounded-full bg-(--colorPurple)/20 flex items-center justify-center shrink-0 mb-4"
+						className="w-10 h-10 rounded-full bg-(--colorPurple)/20 flex items-center justify-center shrink-0 mb-4 transition-colors duration-300"
 					>
-						<Icon className="w-5 h-5 text-(--colorPurple)" />
+						<Icon className="w-5 h-5 text-(--colorPurple) transition-colors duration-300" />
 					</div>
 					<div className="flex flex-col gap-1">
 						<p className="text-3xl font-medium">{heading}</p>
