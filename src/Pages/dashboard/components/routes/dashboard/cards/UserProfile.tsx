@@ -5,9 +5,9 @@ import SmallCard from "./SmallCard";
 
 export default function UserProfile() {
 	return (
-		<Card className="w-full md:w-[288px] flex flex-col gap-6 px-4 py-6">
+		<Card className="w-full lg:w-[288px] flex flex-col gap-6 px-4 py-6">
 			<div className="text-center flex flex-col items-center gap-4">
-				<div className="w-24 h-24 border rounded-full"></div>
+				<div className="w-24 h-24 border rounded-full shrink-0"></div>
 				<div>
 					<h3 className="text-2xl font-medium line-clamp-2">Jamat Ali Mallick</h3>
 					<p className="text-[14px] text-(--colorPurple) font-medium line-clamp-1">

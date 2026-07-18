@@ -23,35 +23,33 @@ export default function TopLanguage() {
 	const colors = chartData.map((item) => item.color);
 
 	return (
-		<Card className="hover:[&>div>.iconHolder]:bg-(--colorPurple) hover:[&>div>.iconHolder>svg]:text-white p-3 md:w-110 w-full">
+		<Card className="hover:[&>div>.iconHolder]:bg-(--colorPurple) hover:[&>div>.iconHolder>svg]:text-white p-3 w-full xl:w-110 overflow-hidden">
 			<HeadingCard Icon={LuCodeXml}>Top Language</HeadingCard>
 
-			<div className="flex h-45 items-center gap-3 mt-2">
-				<div className="h-45 w-44 shrink-0">
+			<div className="flex flex-col sm:flex-row h-auto sm:h-45 items-center gap-3 mt-2">
+				<div className="h-45 w-44 shrink-0 p-4">
 					<DonutChart labels={labels} dataValues={dataValues} colors={colors} />
 				</div>
 
-				<div className="flex h-full w-full scrollbar-none justify-start md:justify-center gap-3 overflow-y-scroll flex-wrap content-center ">
+				<div className="flex h-full w-full scrollbar-none justify-start sm:justify-center gap-3 overflow-y-scroll flex-wrap content-center">
 					{chartData.map((item, index) => (
 						<div key={index} className="flex shrink-0 items-center gap-2 h-fit">
 							<span
 								className="h-2.5 w-2.5 shrink-0 rounded-full"
 								style={{ backgroundColor: item.color }}
 							/>
-							<span className="text-xs font-medium text-gray-700 dark:text-gray-800">
-								{item.name}
-							</span>
+							<span className="text-xs font-medium text-gray-700">{item.name}</span>
 						</div>
 					))}
 				</div>
 			</div>
 
 			<div className="flex h-full items-start">
-				<div className="flex h-41 w-full scrollbar-none justify-center gap-2.5 overflow-y-scroll flex-wrap pt-2">
-					{dummyData.map(() => (
-						<SmallCard className="w-fit pr-5">
+				<div className="flex h-41 w-full scrollbar-none justify-center gap-5 overflow-y-scroll flex-wrap pt-2">
+					{dummyData.map((_, index) => (
+						<SmallCard className="w-fit pr-5" key={index}>
 							<div className="flex items-center gap-2 pl-2">
-								<div className="h-2.5 w-2.5 rounded-full bg-green-400"></div>
+								<div className="h-2.5 w-2.5 rounded-full bg-green-400 shrink-0"></div>
 								<p className="flex flex-col">
 									<span>Portfolio-website</span>
 									<span className="inline-block rounded-[3px] p-px px-1 text-[12px]">

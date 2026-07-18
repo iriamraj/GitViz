@@ -40,10 +40,10 @@ const StatsData = [
 
 export default function Stats() {
 	return (
-		<div className="w-full flex gap-4 flex-wrap">
+		<div className="w-full grid grid-cols-2 sm:grid-cols-3 md:flex md:flex-wrap gap-4">
 			{StatsData.map(({ id, Icon, heading, para }) => (
 				<Card
-					className="w-36 p-3 hover:[&>#iconHolder]:bg-(--colorPurple) hover:[&>#iconHolder>svg]:text-white"
+					className="w-full md:w-36 p-3 hover:[&>#iconHolder]:bg-(--colorPurple) hover:[&>#iconHolder>svg]:text-white"
 					key={id}
 				>
 					<div

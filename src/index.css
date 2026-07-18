@@ -6,6 +6,10 @@
 	--font-poppins: "Poppins", sans-serif;
 }
 
+@theme {
+	--color-base: #b9bdc8;
+}
+
 /* geist-latin-700-normal */
 @font-face {
 	font-family: "Geist";
