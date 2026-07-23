@@ -1,5 +1,5 @@
 import { FaRegDotCircle } from "react-icons/fa";
-import Card from "./Card";
+import Card from "../../../Card";
 import HeadingCard from "./HeadingCard";
 
 export default function Issues() {

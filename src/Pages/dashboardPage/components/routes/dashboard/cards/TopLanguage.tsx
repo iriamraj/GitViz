@@ -1,4 +1,4 @@
-import Card from "./Card";
+import Card from "../../../Card";
 import { LuCodeXml } from "react-icons/lu";
 import SmallCard from "./SmallCard";
 import DonutChart from "../../../charts/DonutChart";

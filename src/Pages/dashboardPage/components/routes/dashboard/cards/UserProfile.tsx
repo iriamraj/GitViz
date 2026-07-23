@@ -1,4 +1,4 @@
-import Card from "./Card";
+import Card from "../../../Card";
 import { MdOutlineMail } from "react-icons/md";
 import { FaXTwitter } from "react-icons/fa6";
 import SmallCard from "./SmallCard";

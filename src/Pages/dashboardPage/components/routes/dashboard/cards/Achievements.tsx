@@ -1,9 +1,9 @@
 import { LuCodeXml } from "react-icons/lu";
-import { GoOrganization } from "react-icons/go";
-import Card from "./Card";
+import { GiAchievement } from "react-icons/gi";
+import Card from "../../../Card";
 import HeadingCard from "./HeadingCard";
 
-const organizationData = [
+const achievementData = [
 	{
 		id: 1,
 		name: "shark pull",
@@ -36,14 +36,12 @@ const organizationData = [
 	},
 ];
 
-export default function Organization() {
+export default function Achievements() {
 	return (
 		<Card className="hover:[&>div>.iconHolder]:bg-(--colorPurple) hover:[&>div>.iconHolder>svg]:text-white p-3 w-full flex flex-col gap-4">
-			<HeadingCard stroke="stroke-1" Icon={GoOrganization}>
-				Organization
-			</HeadingCard>
+			<HeadingCard Icon={GiAchievement}>Achievements</HeadingCard>
 			<div className="w-full flex flex-wrap gap-4 text-[14px]">
-				{organizationData.map((item) => (
+				{achievementData.map((item) => (
 					<div
 						key={item.id}
 						className="w-fit flex flex-col items-center text-[14px] text-(--colorTextLight)"

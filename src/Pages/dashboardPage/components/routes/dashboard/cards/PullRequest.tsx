@@ -1,5 +1,5 @@
 import { FiGitPullRequest } from "react-icons/fi";
-import Card from "./Card";
+import Card from "../../../Card";
 import HeadingCard from "./HeadingCard";
 
 export default function PullRequest() {

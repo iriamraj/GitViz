@@ -1,5 +1,5 @@
 import { FaRegStar } from "react-icons/fa";
-import Card from "./Card";
+import Card from "../../../Card";
 import { LuFolderGit2 } from "react-icons/lu";
 import { LuGitFork } from "react-icons/lu";
 import { FiGitCommit } from "react-icons/fi";

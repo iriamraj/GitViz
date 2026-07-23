@@ -1,5 +1,5 @@
 import { TbActivity } from "react-icons/tb";
-import Card from "./Card";
+import Card from "../../../Card";
 import HeadingCard from "./HeadingCard";
 
 // const dummyData = [

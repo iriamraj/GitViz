@@ -1,4 +1,4 @@
-import type { IconType } from "../../Pages/dashboard/types/IconType";
+import type { IconType } from "../../Pages/dashboardPage/types/IconType";
 
 export default function EmailIcon({ fillColor }: IconType) {
 	return (
