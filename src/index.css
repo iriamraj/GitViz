@@ -140,3 +140,37 @@ html {
 	max-width: 1536px;
 	margin: auto;
 }
+
+.searchGate {
+	background-color: #e5e5f7;
+	opacity: 0.1;
+	background-image:
+		radial-gradient(circle farthest-side at 0% 50%, #e5e5f7 23.5%, transparent 0),
+		radial-gradient(circle farthest-side at 0% 50%, #444cf7 24%, transparent 0),
+		linear-gradient(#e5e5f7 14%, transparent 0, transparent 85%, #e5e5f7 0),
+		linear-gradient(
+			150deg,
+			#e5e5f7 24%,
+			#444cf7 0 26%,
+			transparent 0 74%,
+			#444cf7 0 76%,
+			#e5e5f7 0
+		),
+		linear-gradient(
+			30deg,
+			#e5e5f7 24%,
+			#444cf7 0 26%,
+			transparent 0 74%,
+			#444cf7 0 76%,
+			#e5e5f7 0
+		),
+		linear-gradient(90deg, #444cf7 1.6%, #e5e5f7 0 98.4%, #444cf7 0);
+	background-position:
+		16px 23px,
+		14px 23px,
+		0 0,
+		0 0,
+		0 0,
+		0 0;
+	background-size: 30px 45px;
+}
