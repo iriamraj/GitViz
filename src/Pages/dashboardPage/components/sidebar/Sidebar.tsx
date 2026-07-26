@@ -9,7 +9,7 @@ import useThemeStore from "../../../store/ThemeStore";
 
 const navigationItems: NAvigationItemsType = [
 	{ id: 1, name: "Dashboard", Icon: LuLayoutDashboard, path: "" },
-	{ id: 2, name: "Repository", Icon: LuFolderGit2, path: "repository" },
+	{ id: 2, name: "Repositories", Icon: LuFolderGit2, path: "repositories" },
 	{ id: 3, name: "Account", Icon: LuUserRound, path: "account" },
 ];
 

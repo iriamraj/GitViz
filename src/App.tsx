@@ -13,12 +13,14 @@ const DashboardPage = lazy(() => import("./Pages/dashboardPage/DashboardPage"));
 const Dashboard = lazy(
 	() => import("./Pages/dashboardPage/components/routes/dashboard/InnerDashboard"),
 );
+const Repositories = lazy(
+	() => import("./Pages/dashboardPage/components/routes/repositories/Repositories"),
+);
+
 const Repository = lazy(
-	() => import("./Pages/dashboardPage/components/routes/repository/Repository"),
+	() => import("./Pages/dashboardPage/components/routes/repositories/repository/Repository"),
 );
-const Account = lazy(
-	() => import("./Pages/dashboardPage/components/routes/account/Account"),
-);
+const Account = lazy(() => import("./Pages/dashboardPage/components/routes/account/Account"));
 
 export default function App() {
 	return (
@@ -43,7 +45,15 @@ export default function App() {
 						}
 					/>
 					<Route
-						path="repository"
+						path="repositories"
+						element={
+							<Suspense fallback={<div className="p-6">Loading…</div>}>
+								<Repositories />
+							</Suspense>
+						}
+					/>
+					<Route
+						path="repositories/:repository_name"
 						element={
 							<Suspense fallback={<div className="p-6">Loading…</div>}>
 								<Repository />

@@ -1,71 +1,8 @@
 import { GoRepo, GoStar } from "react-icons/go";
 import Card from "../../Card";
-
-const repositoryData = [
-	{
-		id: 1,
-		starCount: 33,
-		repoName: "GitViz",
-		repoFullName: "iriamraj/GitViz",
-		isPrivate: false,
-		created_at: "2026-03-11T10:23:37Z",
-		updated_at: "2026-03-12T10:25:40Z",
-	},
-	{
-		id: 2,
-		starCount: 33,
-		repoName: "GitViz",
-		repoFullName: "iriamraj/GitViz",
-		isPrivate: false,
-		created_at: "2026-03-11T10:23:37Z",
-		updated_at: "2026-03-12T10:25:40Z",
-	},
-	{
-		id: 3,
-		starCount: 33,
-		repoName: "GitViz",
-		repoFullName: "iriamraj/GitViz",
-		isPrivate: false,
-		created_at: "2026-03-11T10:23:37Z",
-		updated_at: "2026-03-12T10:25:40Z",
-	},
-	{
-		id: 4,
-		starCount: 33,
-		repoName: "GitViz",
-		repoFullName: "iriamraj/GitViz",
-		isPrivate: false,
-		created_at: "2026-03-11T10:23:37Z",
-		updated_at: "2026-03-12T10:25:40Z",
-	},
-	{
-		id: 5,
-		starCount: 33,
-		repoName: "GitViz",
-		repoFullName: "iriamraj/GitViz",
-		isPrivate: false,
-		created_at: "2026-03-11T10:23:37Z",
-		updated_at: "2026-03-12T10:25:40Z",
-	},
-	{
-		id: 6,
-		starCount: 33,
-		repoName: "GitViz",
-		repoFullName: "iriamraj/GitViz",
-		isPrivate: false,
-		created_at: "2026-03-11T10:23:37Z",
-		updated_at: "2026-03-12T10:25:40Z",
-	},
-	{
-		id: 7,
-		starCount: 33,
-		repoName: "GitViz",
-		repoFullName: "iriamraj/GitViz",
-		isPrivate: false,
-		created_at: "2026-03-11T10:23:37Z",
-		updated_at: "2026-03-12T10:25:40Z",
-	},
-];
+import repoData from "../../../../../dummyData/repoData";
+import SkeletonRepository from "./SkeletonRepository";
+import { useNavigate } from "react-router-dom";
 
 const formatDate = (date: string) =>
 	new Date(date).toLocaleDateString(undefined, {
@@ -74,10 +11,16 @@ const formatDate = (date: string) =>
 		day: "numeric",
 	});
 
-export default function Repository() {
+export default function Repositories() {
+	const navigate = useNavigate();
+	function navigateRepo(name: string) {
+		navigate(`${name}`);
+	}
+
+	if (!repoData) return <SkeletonRepository />;
 	return (
 		<div className="grid grid-cols-1 gap-4 p-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-			{repositoryData.map((repo) => (
+			{repoData.map((repo) => (
 				<Card
 					key={repo.id}
 					className="group relative flex h-full min-h-36 flex-col justify-between overflow-hidden p-4"
@@ -91,19 +34,19 @@ export default function Repository() {
 								/>
 								<h3
 									className="truncate text-(--colorText) font-semibold"
-									title={repo.repoName}
+									title={repo.name}
 								>
-									{repo.repoName}
+									{repo.name}
 								</h3>
 							</div>
 							<p className="mt-1 truncate text-sm text-(--colorTextLight)">
-								{repo.repoFullName}
+								{repo.full_name}
 							</p>
 						</div>
 
 						<div className="flex shrink-0 items-center gap-1 rounded-full bg-(--colorBackground) px-2 py-1 text-sm font-medium text-(--colorText)">
 							<GoStar className="text-amber-500" aria-hidden="true" />
-							{repo.starCount}
+							{repo.stargazers_count}
 						</div>
 					</div>
 
@@ -115,6 +58,7 @@ export default function Repository() {
 					<button
 						type="button"
 						className="absolute right-0 bottom-0 flex h-9 w-20 cursor-pointer items-center justify-center rounded-tl-xl bg-(--colorPurple) text-sm font-medium text-white transition-colors duration-200 hover:bg-(--colorPurpleLight)"
+						onClick={() => navigateRepo(repo.name)}
 					>
 						View
 					</button>
