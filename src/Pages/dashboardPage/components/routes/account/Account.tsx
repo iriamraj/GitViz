@@ -1,3 +1,9 @@
+import RoutesHeading from "../../common/RoutesHeading";
+
 export default function Account() {
-	return <div>Account</div>;
+	return (
+		<div>
+			<RoutesHeading>Account</RoutesHeading>
+		</div>
+	);
 }

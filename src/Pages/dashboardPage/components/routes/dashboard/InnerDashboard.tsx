@@ -1,25 +1,19 @@
-import { useShallow } from "zustand/shallow";
-import useThemeStore from "../../../../store/ThemeStore";
 import Achievements from "./cards/Achievements";
 import Contribution from "./cards/Contribution";
 import ContributionStrike from "./cards/ContributionStrike";
-import Issues from "./cards/Issues";
+import Issues from "../../common/Issues";
 import Organization from "./cards/Organization";
 import PullRequest from "./cards/PullRequest";
 import RecentActivity from "./cards/RecentActivity";
 import Stats from "./cards/Stats";
 import TopLanguage from "./cards/TopLanguage";
 import UserProfile from "./cards/UserProfile";
+import RoutesHeading from "../../common/RoutesHeading";
 
 export default function Dashboard() {
-	const { theme } = useThemeStore(useShallow(({ isDark }) => ({ theme: isDark })));
 	return (
 		<div className="px-4 sm:px-8 py-6 flex flex-col gap-5 min-w-0">
-			<h2
-				className={`text-2xl font-medium ${theme ? "text-white" : "text-(--colorBaseDark)"}`}
-			>
-				Dashboard
-			</h2>
+			<RoutesHeading>Dashboard</RoutesHeading>
 
 			<div className="flex flex-col lg:flex-row items-center w-full h-full lg:items-start gap-3.5">
 				<UserProfile />
