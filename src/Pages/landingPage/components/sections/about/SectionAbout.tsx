@@ -15,7 +15,7 @@ export default function SectionAbout() {
 	return (
 		<section id="About" className="flex flex-col items-center justify-center px-5 xl:px-46">
 			<div className="flex w-full flex-col gap-[min(8vw,46px)]">
-				<Heading heading="Everything in" headingColor="One Place"></Heading>
+				<Heading heading="Everything in" headingColor=" One Place"></Heading>
 				<motion.div
 					initial={{ opacity: 0, y: 50 }}
 					whileInView={{ opacity: 1, y: 0 }}

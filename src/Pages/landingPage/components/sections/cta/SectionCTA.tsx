@@ -22,7 +22,7 @@ export default function SectionCTA() {
 				<span
 					className={`${isDark ? "text-(--colorPurpleDark)" : "text-(--colorPurple)"} transition-colors duration-300`}
 				>
-					Visualize Your GitHub?
+					{" "}Visualize Your GitHub?
 				</span>
 			</motion.h2>
 			<motion.div
