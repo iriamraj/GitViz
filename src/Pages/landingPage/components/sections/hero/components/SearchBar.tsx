@@ -2,19 +2,31 @@ import useThemeStore from "../../../../../store/ThemeStore";
 import { SearchInputStore } from "../../../../store/SearchInputStore";
 import { useShallow } from "zustand/shallow";
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 
 export default function SearchBar() {
 	const isDark = useThemeStore((state) => state.isDark);
+	const navigate = useNavigate();
 
 	const { searchInput, setSearchInput } = SearchInputStore(
 		useShallow((state) => ({
 			searchInput: state.searchInput,
 			setSearchInput: state.setSearchInput,
+			setSearchInputError: state.setSearchInputError,
 		})),
 	);
 
 	function handelSearch(e: React.SubmitEvent<HTMLFormElement>) {
 		e.preventDefault();
+
+		if (searchInput) {
+			if (URL.canParse(searchInput)) {
+				const userURL = new URL(searchInput);
+				navigate(`/dashboard${userURL.pathname}`);
+			} else {
+				navigate(`/dashboard/${searchInput}`);
+			}
+		}
 	}
 
 	return (
