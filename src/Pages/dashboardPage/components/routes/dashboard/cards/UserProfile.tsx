@@ -3,13 +3,15 @@ import { MdOutlineMail } from "react-icons/md";
 import { FaXTwitter } from "react-icons/fa6";
 import SmallCard from "./SmallCard";
 
-export default function UserProfile() {
+export default function UserProfile({ noViewMore }: { noViewMore?: boolean }) {
 	return (
 		<Card className="w-full lg:w-[288px] flex flex-col gap-6 px-4 py-6">
 			<div className="text-center flex flex-col items-center gap-4">
-				<div className="w-24 h-24 border rounded-full shrink-0"></div>
+				<div className="w-24 h-24 border border-(--colorDashBorder) rounded-full shrink-0"></div>
 				<div>
-					<h3 className="text-2xl font-medium line-clamp-2">Jamat Ali Mallick</h3>
+					<h3 className="text-2xl font-medium line-clamp-2 text-(--colorText)">
+						Jamat Ali Mallick
+					</h3>
 					<p className="text-[14px] text-(--colorPurple) font-medium line-clamp-1">
 						@iriamraj
 					</p>
@@ -25,32 +27,36 @@ export default function UserProfile() {
 					<div className="w-8 h-8 rounded-full bg-(--colorPurple)/20 flex items-center justify-center shrink-0">
 						<MdOutlineMail className="w-4 h-4 text-(--colorPurple)" />
 					</div>
-					<p className="truncate">ir.iamraj@gmail.com</p>
+					<p className="truncate text-(--colorText)">ir.iamraj@gmail.com</p>
 				</SmallCard>
 
 				<SmallCard className="gap-3">
 					<div className="w-8 h-8 rounded-full bg-(--colorPurple)/20 flex items-center justify-center shrink-0">
 						<FaXTwitter className="w-4 h-4 text-(--colorPurple)" />
 					</div>
-					<p className="truncate">@raj_mallick</p>
+					<p className="truncate text-(--colorText)">@raj_mallick</p>
 				</SmallCard>
 			</div>
 
 			<div className="w-full flex flex-col gap-3 items-center">
 				<SmallCard className="w-fit justify-evenly gap-3">
-					<div className="flex flex-col items-center justify-center">
+					<div className="flex flex-col items-center justify-center text-(--colorText)">
 						<p className="text-[20px] font-medium">2.4k</p>
 						<p className="text-[12px]">Followers</p>
 					</div>
-					<div className="flex flex-col items-center justify-center">
+					<div className="flex flex-col items-center justify-center text-(--colorText)">
 						<p className="text-[20px] font-medium">2.4k</p>
-						<p className="text-[12px]">Followers</p>
+						<p className="text-[12px]">Following</p>
 					</div>
 				</SmallCard>
 
-				<button className="w-full bg-(--colorPurple) rounded-full py-2.5 text-white cursor-pointer">
-					View More
-				</button>
+				{noViewMore == false ? (
+					""
+				) : (
+					<button className="w-full bg-(--colorPurple) rounded-full py-2.5 text-white cursor-pointer">
+						View More
+					</button>
+				)}
 			</div>
 		</Card>
 	);

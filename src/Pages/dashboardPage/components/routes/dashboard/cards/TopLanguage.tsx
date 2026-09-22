@@ -38,7 +38,9 @@ export default function TopLanguage() {
 								className="h-2.5 w-2.5 shrink-0 rounded-full"
 								style={{ backgroundColor: item.color }}
 							/>
-							<span className="text-xs font-medium text-gray-700">{item.name}</span>
+							<span className="text-xs font-medium text-(--colorText)">
+								{item.name}
+							</span>
 						</div>
 					))}
 				</div>
@@ -50,7 +52,7 @@ export default function TopLanguage() {
 						<SmallCard className="w-fit pr-5" key={index}>
 							<div className="flex items-center gap-2 pl-2">
 								<div className="h-2.5 w-2.5 rounded-full bg-green-400 shrink-0"></div>
-								<p className="flex flex-col">
+								<p className="flex flex-col text-(--colorText)">
 									<span>Portfolio-website</span>
 									<span className="inline-block rounded-[3px] p-px px-1 text-[12px]">
 										93% Javascript

@@ -127,6 +127,21 @@
 	--colorTextLight: oklch(0.4 0.03 279);
 }
 
+.dark {
+	--colorForeground: #1c1c24;
+	--colorBackground: #101014;
+	--colorDashBorder: #2a2a33;
+	--colorText: #f3f1f8;
+	--colorTextLight: oklch(0.75 0.02 279);
+	--colorAsh: #3a3a44;
+	--colorBox: #2a2a33;
+}
+
+body {
+	background-color: var(--colorBase);
+	color: var(--colorText);
+}
+
 html::-webkit-scrollbar {
 	display: none;
 }
@@ -141,7 +156,7 @@ html {
 	margin: auto;
 }
 
-.searchGate {
+/* .searchGate {
 	background-color: #e5e5f7;
 	opacity: 0.1;
 	background-image:
@@ -173,4 +188,4 @@ html {
 		0 0,
 		0 0;
 	background-size: 30px 45px;
-}
+} */

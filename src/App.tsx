@@ -4,10 +4,11 @@ import "@fontsource/inter/latin-500.css";
 import "@fontsource/inter/latin-700.css";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useEffect } from "react";
 
 import LandingPage from "./Pages/landingPage/LandingPage";
 import SearchGate from "./Pages/dashboardPage/components/searchGate/SearchGate";
+import useThemeStore from "./Pages/store/ThemeStore";
 
 const DashboardPage = lazy(() => import("./Pages/dashboardPage/DashboardPage"));
 const Dashboard = lazy(
@@ -16,13 +17,18 @@ const Dashboard = lazy(
 const Repositories = lazy(
 	() => import("./Pages/dashboardPage/components/routes/repositories/Repositories"),
 );
-
 const Repository = lazy(
 	() => import("./Pages/dashboardPage/components/routes/repositories/repository/Repository"),
 );
 const Account = lazy(() => import("./Pages/dashboardPage/components/routes/account/Account"));
 
 export default function App() {
+	const isDark = useThemeStore((state) => state.isDark);
+
+	useEffect(() => {
+		document.documentElement.classList.toggle("dark", isDark);
+	}, [isDark]);
+
 	return (
 		<BrowserRouter>
 			<Routes>

@@ -6,7 +6,7 @@ export default function SearchBar() {
 			<FiSearch className="w-6 h-6 mx-3 shrink-0 text-(--colorTextLight)" />
 			<input
 				type="text"
-				className="h-full w-full min-w-0 outline-none truncate"
+				className="h-full w-full min-w-0 bg-transparent outline-none truncate text-(--colorText) placeholder:text-(--colorTextLight)"
 				placeholder="Enter a GitHub username or URL..."
 			/>
 			<div className="bg-(--colorPurple) w-fit h-full px-4 sm:px-5 text-white flex items-center justify-center rounded-tr-full rounded-br-full shrink-0">

@@ -11,59 +11,26 @@ import Contributor from "./cards/Contributor";
 
 export default function Repository() {
 	const { repository_name } = useParams();
-	const [repo] = repoData.filter((item) => {
-		return item.name === repository_name;
-	});
+	const [repo] = repoData.filter((item) => item.name === repository_name);
+
+	if (!repo) {
+		return (
+			<div className="px-4 sm:px-8 py-6 flex flex-col gap-3">
+				<RoutesHeading>Repository</RoutesHeading>
+				<p className="text-(--colorTextLight)">Repository not found.</p>
+			</div>
+		);
+	}
 
 	const shortData = [
-		{
-			id: 1,
-			name: "COMMITS",
-			value: 1245,
-			Icon: FiGitCommit,
-		},
-		{
-			id: 2,
-			name: "STARS",
-			value: "12.4k",
-			Icon: FiGitCommit,
-		},
-		{
-			id: 3,
-			name: "FORKS",
-			value: "1.8k",
-			Icon: FiGitCommit,
-		},
-		{
-			id: 4,
-			name: "WATCHERS",
-			value: "1.8k",
-			Icon: FiGitCommit,
-		},
-		{
-			id: 5,
-			name: "Open Issues",
-			value: "1.8k",
-			Icon: FiGitCommit,
-		},
-		{
-			id: 6,
-			name: "Pull Requests",
-			value: "1.8k",
-			Icon: FiGitCommit,
-		},
-		{
-			id: 7,
-			name: "Contributors",
-			value: "1.8k",
-			Icon: FiGitCommit,
-		},
-		{
-			id: 8,
-			name: "Releases",
-			value: "1.8k",
-			Icon: FiGitCommit,
-		},
+		{ id: 1, name: "COMMITS", value: 1245, Icon: FiGitCommit },
+		{ id: 2, name: "STARS", value: "12.4k", Icon: FiGitCommit },
+		{ id: 3, name: "FORKS", value: "1.8k", Icon: FiGitCommit },
+		{ id: 4, name: "WATCHERS", value: "1.8k", Icon: FiGitCommit },
+		{ id: 5, name: "Open Issues", value: "1.8k", Icon: FiGitCommit },
+		{ id: 6, name: "Pull Requests", value: "1.8k", Icon: FiGitCommit },
+		{ id: 7, name: "Contributors", value: "1.8k", Icon: FiGitCommit },
+		{ id: 8, name: "Releases", value: "1.8k", Icon: FiGitCommit },
 	];
 
 	return (
@@ -103,7 +70,7 @@ export default function Repository() {
 
 			<div className="w-full h-fit flex items-center flex-wrap gap-4 mt-4">
 				<Commits />
-				<Issues width="w-110" />
+				<Issues width="w-full xl:w-110" />
 				<Contributor />
 			</div>
 		</div>
