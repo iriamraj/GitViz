@@ -1,25 +1,24 @@
 import { useParams, Link } from "react-router-dom";
 import RoutesHeading from "../../../common/RoutesHeading";
-import repoData from "../../../../../../dummyData/repoData";
-import { repoCommitsMap } from "../../../../../../dummyData/commitsData";
+import { useGithubRepoDetails } from "../../../../../../hooks/useGithub";
 import { LuFolderGit2, LuArrowLeft, LuExternalLink } from "react-icons/lu";
 import Card from "../../../Card";
-import { FiGitCommit, FiStar, FiGitBranch, FiEye, FiAlertCircle, FiGitPullRequest, FiUsers, FiTag } from "react-icons/fi";
+import { FiStar, FiGitBranch, FiEye, FiAlertCircle } from "react-icons/fi";
 import Commits from "./cards/Commits";
 import CardIcon from "../../../common/CardIcon";
 import Issues from "../../../common/Issues";
 import Contributor from "./cards/Contributor";
 import LanguageBar from "./cards/LanguageBar";
-// import FileTree from "./cards/FileTree";
 
 export default function Repository() {
 	const { repository_name, searchTerm } = useParams();
-	
-	const repo = repoData.find(
-		(item) => item.name.toLowerCase() === repository_name?.toLowerCase()
-	);
+	const { data: repo, isLoading, error } = useGithubRepoDetails(searchTerm, repository_name);
 
-	if (!repo) {
+	if (isLoading) {
+		return <div className="p-8 text-center text-(--colorTextLight)">Loading repository...</div>;
+	}
+
+	if (error || !repo || repo.error) {
 		return (
 			<div className="px-4 sm:px-8 py-6 flex flex-col gap-4 min-w-0">
 				<Link
@@ -36,23 +35,15 @@ export default function Repository() {
 		);
 	}
 
-	const commitsList = repoCommitsMap[repo.full_name] || [];
-	const totalCommitsCount = commitsList.length > 0 ? commitsList.length * 124 : 42; 
-
 	const shortData = [
-		{ id: 1, name: "COMMITS", value: totalCommitsCount.toLocaleString(), Icon: FiGitCommit },
-		{ id: 2, name: "STARS", value: repo.stargazers_count.toLocaleString(), Icon: FiStar },
-		{ id: 3, name: "FORKS", value: repo.forks_count.toLocaleString(), Icon: FiGitBranch },
-		{ id: 4, name: "WATCHERS", value: repo.watchers_count.toLocaleString(), Icon: FiEye },
-		{ id: 5, name: "OPEN ISSUES", value: repo.open_issues_count.toLocaleString(), Icon: FiAlertCircle },
-		{ id: 6, name: "PULL REQUESTS", value: "3", Icon: FiGitPullRequest },
-		{ id: 7, name: "CONTRIBUTORS", value: "6", Icon: FiUsers },
-		{ id: 8, name: "RELEASES", value: "v1.2.0", Icon: FiTag },
+		{ id: 1, name: "STARS", value: repo.stargazers_count?.toLocaleString() || "0", Icon: FiStar },
+		{ id: 2, name: "FORKS", value: repo.forks_count?.toLocaleString() || "0", Icon: FiGitBranch },
+		{ id: 3, name: "WATCHERS", value: repo.watchers_count?.toLocaleString() || "0", Icon: FiEye },
+		{ id: 4, name: "OPEN ISSUES", value: repo.open_issues_count?.toLocaleString() || "0", Icon: FiAlertCircle },
 	];
 
 	return (
 		<div className="px-4 sm:px-8 py-6 flex flex-col gap-6 min-w-0">
-			{/* Top Navigation & Header */}
 			<div className="flex flex-col gap-3">
 				<Link
 					to={`/dashboard/${searchTerm}/repositories`}
@@ -98,8 +89,7 @@ export default function Repository() {
 					</p>
 				)}
 			</div>
-				{/* <FileTree/> */}
-			{/* Metric Stats Cards */}
+
 			<div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
 				{shortData.map(({ id, name, value, Icon }) => (
 					<Card
@@ -121,15 +111,14 @@ export default function Repository() {
 				))}
 			</div>
 
-			{/* Interactive Charts & Deep-Dive Components */}
-			<LanguageBar />
+			<LanguageBar repoName={repo.name} username={searchTerm} />
 			<div className="grid grid-cols-1 lg:grid-cols-3 gap-6 w-full">
 				<div className="lg:col-span-2 flex flex-col gap-6">
-					<Commits repoName={repo.full_name} />
+					<Commits repoName={repo.name} username={searchTerm} />
 					<Issues />
 				</div>
 				<div className="lg:col-span-1">
-					<Contributor repoName={repo.full_name} />
+					<Contributor repoName={repo.name} username={searchTerm} />
 				</div>
 			</div>
 		</div>

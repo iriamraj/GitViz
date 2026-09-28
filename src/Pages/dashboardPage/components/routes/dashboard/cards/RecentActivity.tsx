@@ -1,76 +1,48 @@
-import { TbActivity } from "react-icons/tb";
+import { useParams, Link } from "react-router-dom";
 import Card from "../../../Card";
-import HeadingCard from "./HeadingCard";
-
-// const dummyData = [
-// 	{
-// 		id: 1,
-// 		date: "10:20 AM",
-// 		activity: "Pushed 3 commit on Main",
-// 	},
-// 	{
-// 		id: 2,
-// 		date: "10:20 AM",
-// 		activity: "Pushed 3 commit on Main",
-// 	},
-// 	{
-// 		id: 3,
-// 		date: "10:20 AM",
-// 		activity: "Pushed 3 commit on Main",
-// 	},
-// 	{
-// 		id: 4,
-// 		date: "10:20 AM",
-// 		activity: "Pushed 3 commit on Main",
-// 	},
-// 	{
-// 		id: 5,
-// 		date: "10:20 AM",
-// 		activity: "Pushed 3 commit on Main",
-// 	},
-// 	{
-// 		id: 6,
-// 		date: "10:20 AM",
-// 		activity: "Pushed 3 commit on Main",
-// 	},
-// 	{
-// 		id: 7,
-// 		date: "10:20 AM",
-// 		activity: "Pushed 3 commit on Main",
-// 	},
-// 	{
-// 		id: 8,
-// 		date: "10:20 AM",
-// 		activity: "Pushed 3 commit on Main",
-// 	},
-// 	{
-// 		id: 9,
-// 		date: "10:20 AM",
-// 		activity: "Pushed 3 commit on Main",
-// 	},
-// 	{
-// 		id: 10,
-// 		date: "10:20 AM",
-// 		activity: "Pushed 3 commit on Main",
-// 	},
-// ];
+import { useGithubRepos } from "../../../../../../hooks/useGithub";
+import { GoRepo } from "react-icons/go";
+import { FiStar } from "react-icons/fi";
 
 export default function RecentActivity() {
+	const { searchTerm } = useParams<{ searchTerm: string }>();
+	const { data: repos = [], isLoading } = useGithubRepos(searchTerm);
+
+	if (isLoading) {
+		return (
+			<Card className="p-4 w-full lg:w-80 animate-pulse h-64">
+				<div className="h-6 w-1/2 bg-(--colorDashBorder) rounded mb-4" />
+			</Card>
+		);
+	}
+
+	const recentRepos = [...repos]
+		.sort((a, b) => new Date(b.updated_at).getTime() - new Date(a.updated_at).getTime())
+		.slice(0, 5);
+
 	return (
-		<Card className="hover:[&>div>.iconHolder]:bg-(--colorPurple) hover:[&>div>.iconHolder>svg]:text-white p-3 pb-4 w-full lg:w-72 shrink-0">
-			<HeadingCard Icon={TbActivity}>Recent Activity</HeadingCard>
-			{/* <div className="flex h-full w-full gap-4 pl-4">
-				<div className="w-1 h-full bg-(--colorDashBorder) my-2"></div>
-				<div className="w-full h-40 overflow-y-scroll mt-2 -translate-x-5.75 flex flex-col gap-3">
-					{dummyData.map((item) => (
-						<div key={item.id} className="flex gap-6 items-center">
-							<div className="w-3 h-3 bg-green-400 rounded-full"></div>
-							<p>{item.date}</p>
-							<p>{item.activity}</p>
+		<Card className="p-4 w-full lg:w-80 flex flex-col gap-4">
+			<h3 className="font-semibold text-(--colorText)">Recent Repositories</h3>
+			<div className="flex flex-col gap-3">
+				{recentRepos.map((repo: any) => (
+					<Link
+						key={repo.id}
+						to={`/dashboard/${searchTerm}/repositories/${repo.name}`}
+						className="flex items-center justify-between p-2 rounded-lg hover:bg-(--colorBackground) transition-colors border border-transparent hover:border-(--colorDashBorder)"
+					>
+						<div className="flex items-center gap-2 min-w-0 pr-2">
+							<GoRepo className="text-sm text-(--colorPurple) shrink-0" />
+							<span className="text-xs font-medium text-(--colorText) truncate">
+								{repo.name}
+							</span>
 						</div>
-					))}
-				</div>
-			</div> */}
+						<div className="flex items-center gap-1 text-xs text-(--colorTextLight) shrink-0">
+							<FiStar className="text-amber-500" />
+							<span>{repo.stargazers_count}</span>
+						</div>
+					</Link>
+				))}
+			</div>
 		</Card>
 	);
 }

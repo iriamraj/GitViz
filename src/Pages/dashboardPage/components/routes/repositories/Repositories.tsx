@@ -1,9 +1,9 @@
+import { useParams, useNavigate } from "react-router-dom";
 import { GoRepo, GoStar } from "react-icons/go";
 import Card from "../../Card";
-import repoData from "../../../../../dummyData/repoData";
 import SkeletonRepository from "./SkeletonRepository";
-import { useNavigate } from "react-router-dom";
 import RoutesHeading from "../../common/RoutesHeading";
+import { useGithubRepos } from "../../../../../hooks/useGithub";
 
 const formatDate = (date: string) =>
 	new Date(date).toLocaleDateString(undefined, {
@@ -13,17 +13,26 @@ const formatDate = (date: string) =>
 	});
 
 export default function Repositories() {
+	const { searchTerm } = useParams<{ searchTerm: string }>();
 	const navigate = useNavigate();
-	function navigateRepo(name: string) {
-		navigate(`${name}`);
+	const { data: repos = [], isLoading } = useGithubRepos(searchTerm);
+
+	if (isLoading) return <SkeletonRepository />;
+
+	if (!repos.length) {
+		return (
+			<div className="px-4 sm:px-8 py-6 flex flex-col gap-5 min-w-0">
+				<RoutesHeading>Repositories</RoutesHeading>
+				<p className="text-(--colorTextLight)">No public repositories found.</p>
+			</div>
+		);
 	}
 
-	if (!repoData) return <SkeletonRepository />;
 	return (
 		<div className="px-4 sm:px-8 py-6 flex flex-col gap-5 min-w-0">
 			<RoutesHeading>Repositories</RoutesHeading>
 			<div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-				{repoData.map((repo) => (
+				{repos.map((repo: any) => (
 					<Card
 						key={repo.id}
 						className="group relative flex h-full min-h-36 flex-col justify-between overflow-hidden p-4"
@@ -61,7 +70,7 @@ export default function Repositories() {
 						<button
 							type="button"
 							className="absolute right-0 bottom-0 flex h-9 w-20 cursor-pointer items-center justify-center rounded-tl-xl bg-(--colorPurple) text-sm font-medium text-white transition-colors duration-200 hover:bg-(--colorPurpleLight)"
-							onClick={() => navigateRepo(repo.name)}
+							onClick={() => navigate(`${repo.name}`)}
 						>
 							View
 						</button>
