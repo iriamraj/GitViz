@@ -1,5 +1,7 @@
 import { useShallow } from "zustand/shallow";
 import useThemeStore from "../../../store/ThemeStore";
+import { MdLightMode } from "react-icons/md";
+import { BsFillMoonStarsFill } from "react-icons/bs";
 
 export default function ToggleTheme() {
 	const { isDark, switchTheme } = useThemeStore(
@@ -39,11 +41,11 @@ export default function ToggleTheme() {
 						: "translate-x-0 border-black/80 bg-black"
 				}`}
 			>
-				{/* Drop your sun/moon icon here, e.g.:
-				{isDark
-					? <LuMoon className="h-3.5 w-3.5 text-black" />
-					: <LuSun className="h-3.5 w-3.5 text-white" />} */}
-				<div className={`h-2.5 w-2.5 rounded-full ${isDark ? "bg-black" : "bg-white"}`} />
+				{isDark ? (
+					<BsFillMoonStarsFill className="h-3.5 w-3.5 text-black" />
+				) : (
+					<MdLightMode className="h-5 w-5 text-white" />
+				)}
 			</div>
 		</button>
 	);

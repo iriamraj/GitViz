@@ -1,5 +1,5 @@
 import { MdOutlineMail, MdOutlineCalendarToday } from "react-icons/md";
-import { LuUserRound, LuLink, LuLogOut } from "react-icons/lu";
+import { LuUserRound, LuLink } from "react-icons/lu";
 import { FaXTwitter } from "react-icons/fa6";
 import RoutesHeading from "../../common/RoutesHeading";
 import Card from "../../Card";
