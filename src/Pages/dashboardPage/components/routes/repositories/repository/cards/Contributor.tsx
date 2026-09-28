@@ -1,11 +1,20 @@
-import { FiGitCommit } from "react-icons/fi";
+import { useEffect } from "react";
 import Card from "../../../../Card";
-import HeadingCard from "../../../dashboard/cards/HeadingCard";
 
-export default function Contributor() {
+interface ContributorProps {
+	repoName: string;
+	username?: string;
+}
+
+export default function Contributor({ repoName, username }: ContributorProps) {
+	useEffect(() => {
+		if (!username || !repoName) return;
+		// Fetch contributors using username & repoName
+	}, [username, repoName]);
+
 	return (
-		<Card className="h-60 w-70 p-3">
-			<HeadingCard Icon={FiGitCommit}>Contributors</HeadingCard>
+		<Card className="p-4">
+			<h3 className="font-semibold text-(--colorText)">Contributors</h3>
 		</Card>
 	);
 }

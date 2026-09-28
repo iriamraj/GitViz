@@ -14,7 +14,7 @@ export default function Dashboard() {
 	return (
 		<div className="px-4 sm:px-8 py-6 flex flex-col gap-5 min-w-0">
 			<RoutesHeading>Dashboard</RoutesHeading>
-
+			
 			<div className="flex flex-col lg:flex-row items-center w-full h-full lg:items-start gap-3.5">
 				<UserProfile />
 				<div className="flex flex-col gap-4 w-full min-w-0">

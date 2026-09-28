@@ -19,7 +19,7 @@ export default function Sidebar() {
 	const { isDark } = useThemeStore(useShallow(({ isDark }) => ({ isDark })));
 
 	const inactiveItemClass = isDark
-		? "text-black hover:bg-white/10 hover:text-(--colorPurple)"
+		? "text-white/80 hover:bg-white/10 hover:text-(--colorPurple)"
 		: "text-(--colorText)/80 hover:bg-(--colorPurple)/10 hover:text-(--colorPurple)";
 
 	return (
@@ -29,10 +29,7 @@ export default function Sidebar() {
 					<div className="rounded-full shadow-md w-9 h-9 p-2 flex justify-center items-center shrink-0 bg-white">
 						<GithubIcon fillColor="#6f60b5" />
 					</div>
-					<p
-						className={`text-lg font-semibold transition-colors duration-300 truncate text-black
-						`}
-					>
+					<p className="text-lg font-semibold transition-colors duration-300 truncate text-(--colorText)">
 						Git<span className="text-(--colorPurple) tracking-wide">Viz</span>
 					</p>
 				</div>
@@ -48,9 +45,9 @@ export default function Sidebar() {
 					}`}
 				>
 					{isMobileOpen ? (
-						<RxCross2 className="h-5 w-5 stroke-[0.5] text-black" />
+						<RxCross2 className="h-5 w-5 stroke-[0.5]" />
 					) : (
-						<RxHamburgerMenu className="h-5 w-5 stroke-[0.5] text-black" />
+						<RxHamburgerMenu className="h-5 w-5 stroke-[0.5]" />
 					)}
 				</button>
 			</div>

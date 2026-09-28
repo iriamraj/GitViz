@@ -1,60 +1,53 @@
-import { FaRegStar } from "react-icons/fa";
+import { useParams } from "react-router-dom";
 import Card from "../../../Card";
-import { LuFolderGit2 } from "react-icons/lu";
-import { LuGitFork } from "react-icons/lu";
-import { FiGitCommit } from "react-icons/fi";
-import { MdOutlinePushPin } from "react-icons/md";
-
-const StatsData = [
-	{
-		id: 1,
-		Icon: FaRegStar,
-		heading: "16k",
-		para: "Total Stars",
-	},
-	{
-		id: 2,
-		Icon: LuFolderGit2,
-		heading: "328",
-		para: "Total Repos",
-	},
-	{
-		id: 3,
-		Icon: LuGitFork,
-		heading: "50",
-		para: "Total Forks",
-	},
-	{
-		id: 4,
-		Icon: FiGitCommit,
-		heading: "20k",
-		para: "Total Commits",
-	},
-	{
-		id: 5,
-		Icon: MdOutlinePushPin,
-		heading: "08",
-		para: "Pinned Repos",
-	},
-];
+import CardIcon from "../../../common/CardIcon";
+import { useGithubRepos, useGithubUser } from "../../../../../../hooks/useGithub";
+import { FiStar, FiGitBranch, FiFolder, FiUsers } from "react-icons/fi";
 
 export default function Stats() {
+	const { searchTerm } = useParams<{ searchTerm: string }>();
+	const { data: user, isLoading: loadingUser } = useGithubUser(searchTerm);
+	const { data: repos = [], isLoading: loadingRepos } = useGithubRepos(searchTerm);
+
+	if (loadingUser || loadingRepos) {
 	return (
-		<div className="w-full grid grid-cols-2 sm:grid-cols-3 md:flex md:flex-wrap gap-4">
-			{StatsData.map(({ id, Icon, heading, para }) => (
+		<div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4 animate-pulse">
+			{[1, 2, 3, 4].map((i) => (
+				<Card key={i} className="h-20 bg-(--colorDashBorder)/20">
+					<div className="w-full h-full" />
+				</Card>
+			))}
+		</div>
+	);
+}
+
+	const totalStars = repos.reduce((acc: number, repo: any) => acc + (repo.stargazers_count || 0), 0);
+	const totalForks = repos.reduce((acc: number, repo: any) => acc + (repo.forks_count || 0), 0);
+
+	const statsData = [
+		{ id: 1, name: "TOTAL REPOS", value: user?.public_repos ?? repos.length, Icon: FiFolder },
+		{ id: 2, name: "TOTAL STARS", value: totalStars.toLocaleString(), Icon: FiStar },
+		{ id: 3, name: "TOTAL FORKS", value: totalForks.toLocaleString(), Icon: FiGitBranch },
+		{ id: 4, name: "FOLLOWERS", value: (user?.followers ?? 0).toLocaleString(), Icon: FiUsers },
+	];
+
+	return (
+		<div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4">
+			{statsData.map(({ id, name, value, Icon }) => (
 				<Card
-					className="w-full md:w-36 p-3 hover:[&>#iconHolder]:bg-(--colorPurple) hover:[&>#iconHolder>svg]:text-white"
 					key={id}
+					className="p-4 flex items-center gap-3.5 hover:[&>#iconHolder]:bg-(--colorPurple) hover:[&>#iconHolder>svg]:text-white transition-all"
 				>
-					<div
-						id="iconHolder"
-						className="w-10 h-10 rounded-full bg-(--colorPurple)/20 flex items-center justify-center shrink-0 mb-4 transition-colors duration-300"
-					>
+					<CardIcon>
 						<Icon className="w-5 h-5 text-(--colorPurple) transition-colors duration-300" />
-					</div>
-					<div className="flex flex-col gap-1">
-						<p className="text-3xl font-medium">{heading}</p>
-						<p className="text-[14px] font-medium">{para}</p>
+					</CardIcon>
+					<div className="min-w-0">
+						<p className="text-[11px] font-semibold text-(--colorTextLight) tracking-wider truncate">
+							{name}
+						</p>
+						<p className="text-lg sm:text-2xl font-bold text-(--colorText) truncate">
+							{value}
+						</p>
 					</div>
 				</Card>
 			))}

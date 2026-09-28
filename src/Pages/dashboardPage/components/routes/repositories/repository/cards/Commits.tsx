@@ -1,11 +1,18 @@
-import { FiGitCommit } from "react-icons/fi";
 import Card from "../../../../Card";
-import HeadingCard from "../../../dashboard/cards/HeadingCard";
+import { useRepoCommits } from "../../../../../../../hooks/useGithub";
 
-export default function Commits() {
+interface CommitsProps {
+	repoName: string;
+	username?: string;
+}
+
+export default function Commits({ repoName, username }: CommitsProps) {
+	const { data: commits = [] } = useRepoCommits(username, repoName);
+
 	return (
-		<Card className="w-110 h-60 p-3">
-			<HeadingCard Icon={FiGitCommit}>Commits</HeadingCard>
+		<Card className="p-4">
+			<h3 className="font-semibold mb-2 text-(--colorText)">Recent Commits ({commits.length})</h3>
+			{/* Render commits here */}
 		</Card>
 	);
 }
